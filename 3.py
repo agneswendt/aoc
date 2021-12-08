@@ -45,7 +45,6 @@ def part2(data):
 def get_input():
     with open('input/3.txt', 'r') as f:
         lines = f.readlines()
-    print(lines)
     return [num[:-1] if num[-1] == '\n' else num for num in lines]
 
 
