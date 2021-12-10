@@ -7,7 +7,7 @@ def part1(data):
         '>': 25137
     }
     for line in data:
-        queue = []
+        stack = []
         pairs = {
             '(': ')',
             '{': '}',
@@ -16,10 +16,10 @@ def part1(data):
         }
         for char in line:
             if char in pairs:
-                queue.append(char)
+                stack.append(char)
             else:
                 # char is closing character
-                closing = queue.pop()
+                closing = stack.pop()
                 if not pairs[closing] == char:
                     illegal_chars.append(scores[char])
                     break
@@ -29,7 +29,7 @@ def part1(data):
 def part2(data):
     res = []
     for line in data:
-        queue = []
+        stack = []
         pairs = {
             '(': ')',
             '{': '}',
@@ -39,10 +39,10 @@ def part2(data):
         corrupted = False
         for char in line:
             if char in pairs:
-                queue.append(char)
+                stack.append(char)
             else:
                 # char is closing character
-                closing = queue.pop()
+                closing = stack.pop()
                 if not pairs[closing] == char:
                     corrupted = True
 
@@ -54,7 +54,7 @@ def part2(data):
         }
         if not corrupted:
             score = 0
-            for sign in reversed(queue):
+            for sign in reversed(stack):
                 score = score*5 + scores[pairs[sign]]
             res.append(score)
 
