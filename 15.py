@@ -5,7 +5,6 @@ from collections import defaultdict
 
 def min_cost(G, target):
     dist = defaultdict(lambda: math.inf, {(0, 0): 0})
-    prev = defaultdict()
     queue = PriorityQueue()
     queue.put((0, (0, 0)))
 
@@ -23,7 +22,6 @@ def min_cost(G, target):
                 alt = cost + length
                 if alt < dist[(nx, ny)]:
                     dist[(nx, ny)] = alt
-                    prev[(nx, ny)] = current
                     queue.put((alt, (nx, ny)))
 
 
